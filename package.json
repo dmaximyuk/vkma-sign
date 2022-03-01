@@ -15,9 +15,13 @@
     "node": ">=14.0.0"
   },
   "keywords": [
-    "rand",
-    "random",
-    "number"
+    "vkma",
+    "sign",
+    "vk",
+    "mini-apps",
+    "mini",
+    "apps",
+    "vkontakte"
   ],
   "author": "dmaksimyk",
   "scripts": {
