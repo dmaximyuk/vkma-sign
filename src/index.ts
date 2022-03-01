@@ -5,7 +5,7 @@ const qs = require('querystring');
 // Types
 import { TVKSign, TParams } from 'types';
 
-export const sign = (token: string, params: TParams): TVKSign => {
+const sign = (token: string, params: TParams): TVKSign => {
   // If there is no token or secret key
   if (!token || !params.secretKeyVKMA) throw Error("specify the token or secret key VKMA Sign")
 
@@ -38,3 +38,5 @@ export const sign = (token: string, params: TParams): TVKSign => {
     data: check ? urlParams : undefined,
   }
 }
+
+export default sign
