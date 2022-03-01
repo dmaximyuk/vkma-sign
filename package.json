@@ -1,6 +1,6 @@
 {
   "name": "@dmaksimyk/vkma-sign",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This package VKMA Sign!",
   "main": "dist/index",
   "types": "dist/index.d.ts",
