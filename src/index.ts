@@ -1,9 +1,9 @@
 // Vendor
 import crypto from 'crypto'
+const qs = require('querystring');
 
 // Types
 import { TVKSign, TParams } from 'types';
-const qs = require('querystring');
 
 export const sign = (token: string, params: TParams): TVKSign => {
   // If there is no token or secret key
