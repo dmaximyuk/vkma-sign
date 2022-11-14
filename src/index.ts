@@ -1,42 +1,46 @@
-// Vendor
-import crypto from 'crypto'
-const qs = require('querystring');
+import crypto from "crypto";
+const qs = require("querystring");
 
-// Types
-import { TVKSign, TParams } from 'types';
+import { IParams, IReturnData } from "types";
 
-const sign = (token: string, params: TParams): TVKSign => {
-  // If there is no token or secret key
-  if (!token || !params.secretKeyVKMA) throw Error("specify the token or secret key VKMA Sign")
+class Sign {
+  private signKey: string;
+  static signKey: string;
 
-  // Getting parameters from a token
-  const urlParams = qs.parse(token);
-  const ordered: { [key: string]: string } = {};
-  Object.keys(urlParams).sort().forEach((key) => {
-      if (key.slice(0, 3) === 'vk_') {
+  constructor(vkmaSignKey: string) {
+    this.signKey = vkmaSignKey;
+  }
+
+  public static parse(userToken: string): IReturnData {
+    const urlParams = qs.parse(userToken);
+    const ordered: { [key: string]: string } = {};
+    Object.keys(urlParams)
+      .sort()
+      .forEach((key) => {
+        if (key.slice(0, 3) === "vk_") {
           ordered[key] = urlParams[key];
-      }
-  });
+        }
+      });
 
-  const stringParams = qs.stringify(ordered);
-  
-  // Signature verification
-  const paramsHash = crypto
-    .createHmac('sha256', `${params.secretKeyVKMA}`)
-    .update(stringParams)
-    .digest()
-    .toString('base64')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-    .replace(/=$/, '');
+    const stringParams = qs.stringify(ordered);
 
-  const check = paramsHash == urlParams.sign;
+    const paramsHash = crypto
+      .createHmac("sha256", `${this.signKey}`)
+      .update(stringParams)
+      .digest()
+      .toString("base64")
+      .replace(/\+/g, "-")
+      .replace(/\//g, "_")
+      .replace(/=$/, "");
 
-  // Returning the test result
-  return {
-    auth: check,
-    data: check ? urlParams : undefined,
+    const check = paramsHash == urlParams.sign;
+
+    return {
+      isAuthorized: !!check,
+      ...(!!check && { data: urlParams }),
+    };
   }
 }
 
-export default sign
+export { IParams, IReturnData };
+export default Sign;
