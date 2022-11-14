@@ -1,7 +1,7 @@
 import crypto from "crypto";
 const qs = require("querystring");
 
-import { IParams, IReturnData } from "types";
+import { IParams, IReturnData } from "./types";
 
 class Sign {
   private signKey: string;
