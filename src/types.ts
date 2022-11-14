@@ -6,7 +6,7 @@ export interface IParams {
 
 export interface IReturnData {
   isAuthorized: boolean;
-  data: ParsedUrlQuery & {
+  data?: ParsedUrlQuery & {
     vk_access_token_settings: string;
     vk_app_id: string;
     vk_are_notifications_enabled: string;
