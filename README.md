@@ -31,7 +31,7 @@ const userToken = "dG9rZW4KMTIzMT=="; // the token you received from the service
 if (!vkmaSecretKey || !userToken) throw new Error("VKMA Secret Key or User Token is undefined.");
 
 const sign = new Sign(vkmaSecretKey); 
-const { isAuthorized, data } = sign.parse(userToken);
+const { isAuthorized, data } = sign.identify(userToken);
 
 if (isAuthorized) {
 	console.log(data);

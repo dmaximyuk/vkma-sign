@@ -11,7 +11,7 @@ class Sign {
     this.signKey = vkmaSignKey;
   }
 
-  public static parse(userToken: string): IReturnData {
+  public identify(userToken: string): IReturnData {
     const urlParams = qs.parse(userToken);
     const ordered: { [key: string]: string } = {};
     Object.keys(urlParams)
