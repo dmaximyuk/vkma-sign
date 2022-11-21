@@ -1,6 +1,6 @@
 {
-  "name": "@dmaksimyk/vkma-sign",
-  "version": "0.1.5",
+  "name": "@dmaximyuk/vkma-sign",
+  "version": "1.0.0",
   "description": "Package for authorization on the VKMA backend.",
   "main": "dist/index",
   "types": "dist/index.d.ts",
@@ -9,7 +9,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dmaksimyk/vkma-sign.git"
+    "url": "git+https://github.com/dmaximyuk/vkma-sign.git"
   },
   "engines": {
     "node": ">=14.0.0"
@@ -23,7 +23,7 @@
     "apps",
     "vkontakte"
   ],
-  "author": "dmaksimyk",
+  "author": "dmaximyuk",
   "scripts": {
     "build": "rimraf dist && tsc",
     "dev": "cross-env NODE_PATH=./dist nodemon",
